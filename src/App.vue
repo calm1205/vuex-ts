@@ -1,5 +1,18 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import HelloWorld from "./components/HelloWorld.vue";
+import { mapGetters, mapActions } from "vuex";
+
+export default {
+  components: {
+    HelloWorld,
+  },
+  methods: {
+    ...mapActions(["increment"]),
+  },
+  computed: {
+    ...mapGetters(["count"]),
+  },
+};
 </script>
 
 <template>
@@ -12,6 +25,8 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <button @click="increment">increment</button>
+  <p>count is {{ count }}</p>
 </template>
 
 <style scoped>
