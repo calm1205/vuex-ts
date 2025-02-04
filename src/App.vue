@@ -1,16 +1,21 @@
 <script lang="ts">
 import HelloWorld from "./components/HelloWorld.vue";
 import { mapGetters, mapActions } from "vuex";
+import { store } from "./store/store";
 
 export default {
   components: {
     HelloWorld,
   },
   methods: {
-    ...mapActions(["increment"]),
+    ...mapActions("countModule", ["increment"]),
   },
   computed: {
-    ...mapGetters(["count"]),
+    ...mapGetters("countModule", ["count"]),
+  },
+  mounted() {
+    console.log(store.state.countModule?.count);
+    console.log(this.$store.state.countModule?.count);
   },
 };
 </script>

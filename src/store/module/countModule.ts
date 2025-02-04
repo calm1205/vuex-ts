@@ -1,10 +1,11 @@
 import type { Module } from "vuex/types/index.d";
 
-interface CounterState {
+export interface CountState {
   count: number;
 }
 
-export const countModule: Module<CounterState, unknown> = {
+export const countModule: Module<CountState, unknown> = {
+  namespaced: true,
   state: () => ({ count: 0 }),
   mutations: {
     increment: (state) => state.count++,
